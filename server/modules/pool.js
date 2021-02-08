@@ -28,9 +28,11 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   config = {
-    host: process.env.PG_USER || 'localhost', // Server hosting the postgres database
-    port: process.env.PG_SECRET || 5432, // env var: PGPORT
-    database: 'secure_submarine', // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
+    user: process.env.PG_USER || '',
+    password: process.env.PG_SECRET || '',
+    host: process.env.PG_HOST || 'localhost', // Server hosting the postgres database
+    port: process.env.PG_PORT || 5432, // env var: PGPORT
+    database: process.env.PG_DATABASE, // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   };
